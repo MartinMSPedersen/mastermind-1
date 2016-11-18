@@ -17,7 +17,7 @@ int main(int argc, char** argv)
          << "******************" << endl;
 
     cout << endl
-         << "You must enter your guess a peg at the time"
+         << "You must enter your guess a peg at the time" << endl
          << "Use the numbers 0-5 to indicate your guess"
          << endl;
 
