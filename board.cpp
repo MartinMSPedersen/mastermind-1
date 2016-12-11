@@ -26,21 +26,24 @@ Board::Board(bool showSecret)
 void Board::drawBoard(int currentRow)
 {
     int i, j;
+	int rights, almost_rights;
 
     this->allGuessed = true;
 
     for (i = 0; i < this->height; i++) 
     {
+		rights = almost_rights = 0;
+
         cout << "---------" << endl;
         for (j = 0; j < 4; j++) 
         {
             if (this->userLines[i].getPeg(j) == this->secretState[j]) 
             {
-                cout << "B";
+                rights++;
             }
             else if (find(begin(this->secretState), end(this->secretState), this->userLines[i].getPeg(j)) != end(this->secretState))
             {
-                cout << "W";
+                almost_rights++;
 
                 //Only update the allGuessed by looking of correctness of the last row
                 if (i == currentRow-1 || i == 0)
@@ -48,11 +51,22 @@ void Board::drawBoard(int currentRow)
             }
             else
             {
-                cout << ".";
                 if (i == currentRow-1 || i == 0)
                     this->allGuessed = false;
             }
         }
+		for (j = 0; j < rights; j++)
+		{
+			cout << "B";
+		}
+		for (j = 0; j < almost_rights; j++)
+		{
+			cout << "W";
+		}
+		for (j = 0; j < (4-(rights+almost_rights)); j++)
+		{
+			cout << ".";
+		}
         cout << " "; 
         cout << this->userLines[i].toString() << endl;   
     }
