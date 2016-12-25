@@ -13,13 +13,15 @@ UserLine::UserLine()
     {
         this->state[i] = -1;
     }
+	this->result = "....";
 }
 
 string UserLine::toString()
 {
     int i;
     stringstream res;
-
+	res << this->result;
+	res << " ";
     for (i = 0; i < 4; i++)
     {
         if (this->state[i] == -1)
@@ -42,4 +44,9 @@ void UserLine::setPeg(int pos, int val)
 int UserLine::getPeg(int pos)
 {
     return this->state[pos];
+}
+
+void UserLine::setResultLine(string resultLine)
+{
+	this->result = resultLine;
 }
