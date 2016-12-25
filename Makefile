@@ -3,3 +3,10 @@ all:
 
 run: all 
 	./mastermind
+
+zip: all
+	zip -r mastermind.zip . -x .\*
+
+clean:
+	rm mastermind
+	rm mastermind.zip
