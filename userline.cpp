@@ -11,26 +11,26 @@ UserLine::UserLine()
 
     for (i = 0; i < 4; i++) 
     {
-        this->state[i] = -1;
+        state[i] = -1;
     }
-	this->result = "....";
+	result = "....";
 }
 
 string UserLine::toString()
 {
     int i;
     stringstream res;
-	res << this->result;
+	res << result;
 	res << " ";
     for (i = 0; i < 4; i++)
     {
-        if (this->state[i] == -1)
+        if (state[i] == -1)
         {
             res << ".";
         }
         else
         {
-            res << to_string(this->state[i]);
+            res << to_string(state[i]);
         }
     }
     return res.str();
@@ -38,15 +38,15 @@ string UserLine::toString()
 
 void UserLine::setPeg(int pos, int val)
 {
-    this->state[pos] = val;
+    state[pos] = val;
 }
 
 int UserLine::getPeg(int pos)
 {
-    return this->state[pos];
+    return state[pos];
 }
 
 void UserLine::setResultLine(string resultLine)
 {
-	this->result = resultLine;
+	result = resultLine;
 }

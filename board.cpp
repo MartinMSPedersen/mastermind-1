@@ -16,13 +16,13 @@ Board::Board(bool showSecret)
     
     for (i = 0; i < 4; i++) 
     {
-        this->secretState[i] = rand() % 6;
+        secretState[i] = rand() % 6;
     }
 
-    this->height = 10;
-    this->width = 4;
-    this->showSecret = showSecret;
-    this->allGuessed = false;
+    height = 10;
+    width = 4;
+    showSecret = showSecret;
+    allGuessed = false;
 }
 
 void Board::drawBoard(int currentRow)
@@ -30,17 +30,17 @@ void Board::drawBoard(int currentRow)
     int i, j;
 	int rights, almost_rights;
 
-    this->allGuessed = false;
+    allGuessed = false;
 	if (userLines.size() > 0)
 	{
 		rights = almost_rights = 0;
 		for (j = 0; j < 4; j++) 
 		{
-			if (userLines.back().getPeg(j) == this->secretState[j]) 
+			if (userLines.back().getPeg(j) == secretState[j]) 
 			{
 				rights++;
 			}
-			else if (find(begin(this->secretState), end(this->secretState), userLines.back().getPeg(j)) != end(this->secretState))
+			else if (find(begin(secretState), end(secretState), userLines.back().getPeg(j)) != end(secretState))
 			{
 				almost_rights++;
 			}
@@ -66,14 +66,15 @@ void Board::drawBoard(int currentRow)
         cout << "---------" << endl;
         cout << i.toString() << endl;   
     }
+	cout << "---------" << endl;
 
-    if (this->showSecret)
+    if (showSecret)
     {
         cout << "   " 
-             << this->secretState[0]
-             << this->secretState[1]
-             << this->secretState[2]
-             << this->secretState[3]
+             << secretState[0]
+             << secretState[1]
+             << secretState[2]
+             << secretState[3]
              << "   " << endl;
     }
     else
@@ -83,7 +84,7 @@ void Board::drawBoard(int currentRow)
 	cout << "RIGHTS: " << rights << endl;
 	if (rights == 4)
 	{
-		this->allGuessed = true;
+		allGuessed = true;
 	}
 	else 
 	{
@@ -93,10 +94,10 @@ void Board::drawBoard(int currentRow)
 
 void Board::placeMove(int pos, int val)
 {
-    this->userLines.back().setPeg(pos, val);
+    userLines.back().setPeg(pos, val);
 }
 
 bool Board::gameOver()
 {
-    return this->allGuessed;
+    return allGuessed;
 }
