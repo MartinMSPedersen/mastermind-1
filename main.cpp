@@ -21,7 +21,7 @@ int main(int argc, char** argv)
          << "Use the numbers 0-5 to indicate your guess"
          << endl;
 
-    Board b(true);
+    Board b(false);
 
     while (gameCounter < 10 && !b.gameOver())
     {

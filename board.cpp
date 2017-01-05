@@ -21,7 +21,7 @@ Board::Board(bool showSecret)
 
     height = 10;
     width = 4;
-    showSecret = showSecret;
+    this->showSecret = showSecret;
     allGuessed = false;
 }
 
@@ -81,8 +81,8 @@ void Board::drawBoard(int currentRow)
     {
         cout << "   XXXX   " << endl;
     }
-	cout << "RIGHTS: " << rights << endl;
-	if (rights == 4)
+	
+    if (rights == 4)
 	{
 		allGuessed = true;
 	}
