@@ -4,12 +4,13 @@
 
 using namespace std;
 
-int main(int argc, char** argv)
+int main()
 {
     int gameCounter = 0;
-    int pos = 0;
     int val = -1;
     int i;
+
+    //Initialize the game and print welcome message for user
 
     cout << "******************" << endl
          << "*   Welcome to   *" << endl
@@ -23,10 +24,12 @@ int main(int argc, char** argv)
 
     Board b(false);
 
+
+    //The game loop
     while (gameCounter < 10 && !b.gameOver())
     {
-        cout << "ROUND: " << gameCounter << endl;
-        b.drawBoard(gameCounter);
+        cout << "ROUND: " << (gameCounter+1) << endl;
+        b.drawBoard();
         if (b.gameOver())
         {
             break;
@@ -41,14 +44,15 @@ int main(int argc, char** argv)
         gameCounter++;
     }
 
+    //Final message for the user
     if (gameCounter < 10) 
     {
         cout << "You won" << endl;
-    }
-
-    if (gameCounter >= 10 && !b.gameOver())
+    } 
+    else if (gameCounter >= 10 && !b.gameOver())
     {
         cout << "You lost" << endl;
+        cout << "The secret was: " << b.getSecretState() << endl;
     }
     else if (gameCounter >= 10)
     {

@@ -12,10 +12,10 @@ class UserLine
         string toString();
         void setPeg(int pos, int val);
         int getPeg(int pos);
-		void setResultLine(string resultLine);
+        void setResultLine(string resultLine);
     private:
         int state[4];
-		string result;
+        string result;
 };
 
 #endif

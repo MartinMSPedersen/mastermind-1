@@ -19,17 +19,17 @@ Board::Board(bool showSecret)
         secretState[i] = rand() % 6;
     }
 
-    height = 10;
-    width = 4;
     this->showSecret = showSecret;
     allGuessed = false;
 }
 
-void Board::drawBoard(int currentRow)
+void Board::drawBoard()
 {
-    int i, j;
+    int j;
     int rights, almost_rights;
 
+    //Calculate the value of the last userline and update with correct rights and wrongs
+    
     allGuessed = false;
     if (userLines.size() > 0)
     {
@@ -61,6 +61,8 @@ void Board::drawBoard(int currentRow)
         userLines.back().setResultLine(res.str());
     }
 
+    //Draw the board and the secret (or XXXX)
+
     for (UserLine i: userLines) 
     {
         cout << "---------" << endl;
@@ -81,7 +83,10 @@ void Board::drawBoard(int currentRow)
     {
         cout << "   XXXX   " << endl;
     }
-    
+
+    //If the user have guessed the secret mark the game as done
+    //Else prepare a new line for the user
+
     if (rights == 4)
     {
         allGuessed = true;
@@ -100,4 +105,12 @@ void Board::placeMove(int pos, int val)
 bool Board::gameOver()
 {
     return allGuessed;
+}
+
+string Board::getSecretState()
+{
+    stringstream res;
+    res << secretState[0] << secretState[1];
+    res << secretState[2] << secretState[3];
+    return res.str();
 }
