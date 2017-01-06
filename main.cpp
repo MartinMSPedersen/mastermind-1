@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #include "board.h" 
 
@@ -7,7 +8,7 @@ using namespace std;
 int main()
 {
     int gameCounter = 0;
-    int val = -1;
+    string user_input;
     int i;
 
     //Initialize the game and print welcome message for user
@@ -18,9 +19,8 @@ int main()
          << "******************" << endl;
 
     cout << endl
-         << "You must enter your guess a peg at the time" << endl
-         << "Use the numbers 0-5 to indicate your guess"
-         << endl;
+         << "You must enter your guess as a number with the four pegs" << endl
+         << "Use the numbers 0-5. Example 1234 or 0231" << endl;
 
     Board b(false);
 
@@ -28,18 +28,28 @@ int main()
     //The game loop
     while (gameCounter < 10 && !b.gameOver())
     {
-        cout << "ROUND: " << (gameCounter+1) << endl;
+        cout << endl << "ROUND: " << (gameCounter+1) << endl;
         b.drawBoard();
         if (b.gameOver())
         {
             break;
         }
 
-        for (i = 0; i < 4; i++) 
+        cout << endl << "Enter guess: ";
+        cin >> user_input;
+
+        if (user_input.length() != 4) 
         {
-            cout << "Peg for pos " << i << endl;
-            cin >> val;
-            b.placeMove(i, val);
+            cout << "Guess must be 4 long" << endl;
+            continue;
+        }
+        else
+        {
+            for (i = 0; i < 4; i++) 
+            {
+                int tmp = user_input.at(i)-'0';
+                b.placeMove(i, tmp);
+            }
         }
         gameCounter++;
     }
