@@ -13,15 +13,15 @@ UserLine::UserLine()
     {
         state[i] = -1;
     }
-	result = "....";
+    result = "....";
 }
 
 string UserLine::toString()
 {
     int i;
     stringstream res;
-	res << result;
-	res << " ";
+    res << result;
+    res << " ";
     for (i = 0; i < 4; i++)
     {
         if (state[i] == -1)
@@ -48,5 +48,5 @@ int UserLine::getPeg(int pos)
 
 void UserLine::setResultLine(string resultLine)
 {
-	result = resultLine;
+    result = resultLine;
 }
