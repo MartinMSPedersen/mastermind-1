@@ -46,14 +46,14 @@ int main(int argc, char** argv)
         cout << "You won" << endl;
     }
 
-	if (gameCounter >= 10 && !b.gameOver())
-	{
-		cout << "You lost" << endl;
-	}
-	else if (gameCounter >= 10)
-	{
-		cout << "You won" << endl;
-	}
+    if (gameCounter >= 10 && !b.gameOver())
+    {
+        cout << "You lost" << endl;
+    }
+    else if (gameCounter >= 10)
+    {
+        cout << "You won" << endl;
+    }
 
     return 0;
 }

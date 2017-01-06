@@ -28,45 +28,45 @@ Board::Board(bool showSecret)
 void Board::drawBoard(int currentRow)
 {
     int i, j;
-	int rights, almost_rights;
+    int rights, almost_rights;
 
     allGuessed = false;
-	if (userLines.size() > 0)
-	{
-		rights = almost_rights = 0;
-		for (j = 0; j < 4; j++) 
-		{
-			if (userLines.back().getPeg(j) == secretState[j]) 
-			{
-				rights++;
-			}
-			else if (find(begin(secretState), end(secretState), userLines.back().getPeg(j)) != end(secretState))
-			{
-				almost_rights++;
-			}
-		}
-		stringstream res;
-		for (j = 0; j < rights; j++)
-		{
-			res << "B";
-		}
-		for (j = 0; j < almost_rights; j++)
-		{
-			res << "W";
-		}
-		for (j = 0; j < (4-(rights+almost_rights)); j++)
-		{
-			res << ".";
-		}
-		userLines.back().setResultLine(res.str());
-	}
+    if (userLines.size() > 0)
+    {
+        rights = almost_rights = 0;
+        for (j = 0; j < 4; j++) 
+        {
+            if (userLines.back().getPeg(j) == secretState[j]) 
+            {
+                rights++;
+            }
+            else if (find(begin(secretState), end(secretState), userLines.back().getPeg(j)) != end(secretState))
+            {
+                almost_rights++;
+            }
+        }
+        stringstream res;
+        for (j = 0; j < rights; j++)
+        {
+            res << "B";
+        }
+        for (j = 0; j < almost_rights; j++)
+        {
+            res << "W";
+        }
+        for (j = 0; j < (4-(rights+almost_rights)); j++)
+        {
+            res << ".";
+        }
+        userLines.back().setResultLine(res.str());
+    }
 
     for (UserLine i: userLines) 
     {
         cout << "---------" << endl;
         cout << i.toString() << endl;   
     }
-	cout << "---------" << endl;
+    cout << "---------" << endl;
 
     if (showSecret)
     {
@@ -81,15 +81,15 @@ void Board::drawBoard(int currentRow)
     {
         cout << "   XXXX   " << endl;
     }
-	
+    
     if (rights == 4)
-	{
-		allGuessed = true;
-	}
-	else 
-	{
-		userLines.push_back(UserLine());
-	}
+    {
+        allGuessed = true;
+    }
+    else 
+    {
+        userLines.push_back(UserLine());
+    }
 }
 
 void Board::placeMove(int pos, int val)

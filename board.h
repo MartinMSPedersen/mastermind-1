@@ -16,7 +16,7 @@ class Board
 
     private:
         int secretState[4];
-		vector<UserLine> userLines;
+        vector<UserLine> userLines;
 
         int height;
         int width;
