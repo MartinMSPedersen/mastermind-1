@@ -5,7 +5,7 @@ run: all
 	./mastermind
 
 zip: all
-	zip -r mastermind.zip . -x .\*
+	cd .. && zip -r mastermind.zip mastermind -x mastermind/.\*
 
 clean:
 	rm mastermind
